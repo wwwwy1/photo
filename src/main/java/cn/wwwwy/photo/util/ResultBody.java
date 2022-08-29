@@ -2,6 +2,9 @@ package cn.wwwwy.photo.util;
 
 import lombok.Data;
 
+/**
+ * @author wwwwy
+ */
 @Data
 public class ResultBody {
     private int code;

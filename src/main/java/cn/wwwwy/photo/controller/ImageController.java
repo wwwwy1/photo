@@ -5,7 +5,6 @@ import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.lang.UUID;
 import cn.wwwwy.photo.config.UploadConfig;
 import cn.wwwwy.photo.entity.Image;
-import cn.wwwwy.photo.handler.GlobalExceptionHandler;
 import cn.wwwwy.photo.service.IImageService;
 import cn.wwwwy.photo.util.ResultBody;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -90,12 +89,12 @@ public class ImageController {
 
             try {
                 FileUtils.copyInputStreamToFile(file.getInputStream(),
-                        new File(uploadConfig.getImgUploadUrl(newFileName)));
+                        new File(uploadConfig.getImgUploadPath(newFileName)));
                 // 文件压缩
-                Img.from(FileUtil.file(image.getSourceUrl()))
+                Img.from(FileUtil.file(uploadConfig.getImgUploadPath(newFileName)))
                         //压缩比例
                         .setQuality(0.3)
-                        .write(FileUtil.file(image.getPreviewUrl()));
+                        .write(FileUtil.file(uploadConfig.getImgPreviewUrl(newFileName)));
 
                 imageList.add(image);
             } catch (Exception e) {

@@ -9,6 +9,24 @@ public class UploadConfig {
     /**
      * 图片文件上传地址
      */
+    @Value("${img.uploadPath}")
+    public String imgUploadPath;
+
+    /**
+     * 图片文件下载地址
+     */
+    @Value("${img.downloadPath}")
+    public String imgDownloadPath;
+
+    /**
+     * 图片文件预览地址
+     */
+    @Value("${img.previewPath}")
+    public String imgPreviewPath;
+
+    /**
+     * 图片文件上传地址
+     */
     @Value("${img.uploadUrl}")
     public String imgUploadUrl;
 
@@ -25,6 +43,17 @@ public class UploadConfig {
     public String imgPreviewUrl;
 
 
+    public String getImgDownloadPath(String filename){
+        return imgDownloadPath + filename;
+    }
+
+    public String getImgPreviewPath(String filename){
+        return imgPreviewPath + filename;
+    }
+
+    public String getImgUploadPath(String filename){
+        return imgUploadPath + filename;
+    }
     public String getImgDownloadUrl(String filename){
         return imgDownloadUrl + filename;
     }
