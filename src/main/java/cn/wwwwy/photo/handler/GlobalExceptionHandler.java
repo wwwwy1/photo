@@ -30,6 +30,19 @@ public class GlobalExceptionHandler {
     }
 
     /**
+     * 处理空指针的异常
+     * @param req
+     * @param e
+     * @return
+     */
+    @ExceptionHandler(value = ErrorParamException.class)
+    @ResponseBody
+    public ResultBody exceptionHandler(HttpServletRequest req, ErrorParamException e){
+        // logger.error("发生业务异常！原因是:",e);
+        return ResultBody.error(e.getMsg());
+    }
+
+    /**
      * 处理其他异常
      * @param req
      * @param e
